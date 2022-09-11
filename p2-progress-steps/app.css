@@ -1,0 +1,109 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #f6f7fb;
+    font-family: 'Roboto', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    overflow: hidden;
+    margin: 0;
+}
+
+.container {
+    text-align: center;
+}
+
+.progress-container {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    margin-bottom: 30px;
+    max-width: 100%;
+    width: 350px;
+}
+
+.progress-container::before {
+    /*this before is not working so we have to add -> content to empty*/
+    content: '';
+    background-color: #e0e0e0;
+    /*change color to grey..*/
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    height: 4px;
+    width: 100%;
+    /*full width*/
+    z-index: -1;
+}
+
+.progress {
+    /* //////////////// */
+    /* copy paste it above to .progress-container::before*/
+    /* //////////////// */
+    background-color: #3498db;
+    position: absolute;
+    /*.progress-container -> position: relative;*/
+    top: 50%;
+    /*if total height 100, at 50*/
+    left: 0;
+    transform: translateY(-50%);
+    height: 4px;
+    /*50 to 54 //  translateY(-50%) shifts 2 upwards // now 48 to 52 exactly in centre  */
+    width: 0%;
+    /*0% not visible 10%...or 50% visible but at starting we want not visible*/
+    /*.progress-container::before-> now if i set it to 50%, it's working like filling grey line*/
+    z-index: -1;
+    /*we want it behind the circles*/
+    transition: 0.4s ease;
+    /*when we click previous or next, we want transition in certain duration*/
+}
+
+/* let's style circles */
+.circle {
+    background-color: #fff;
+    color: #999;
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    /* ====so these numbers 1,2,3,4 are not centered best way to do it with flexbox=== */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* ========= */
+    border: 3px solid #e0e0e0;
+    /*same color as the line*/
+    transition: 0.4s ease;
+    /* when we will chnge border with active class*/
+}
+
+.circle.active {
+    border-color: #3498db;
+    /* same color as .progress div/line */
+}
+
+/* let's style buttons */
+.btn {
+    background-color: #3498db;
+    color: #fff;
+    border: 0;
+    border-radius: 6px;
+    cursor: pointer;
+    padding: 8px 30px;
+    margin: 5px;
+    font-size: 16px;
+}
+
+.btn:active {
+    transform: scale(0.98);
+}
+
+.btn:disabled {
+    background-color: #e0e0e0;
+    cursor: not-allowed;
+}
