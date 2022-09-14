@@ -1,0 +1,61 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-image: linear-gradient(90deg, #7d5fff, #ba4ddb);
+    font-family: 'Roboto', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    overflow: hidden;
+    margin: 0;
+}
+
+.search {
+    position: relative;
+    height: 50px;
+}
+
+.search .input {
+    background-color: #fff;
+    border: 0;
+    font-size: 18px;
+    padding: 15px;
+    height: 50px;
+    width: 50px;
+    /* start with this size- short, then we add animation/transition to expand it  */
+    transition: width 0.3s ease;
+}
+
+.btn {
+    background-color: #fff;
+    border: 0;
+    cursor: pointer;
+    font-size: 24px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 50px;
+    width: 50px;
+    /* we add transition to input to expand 
+    now let's add transition to btn, it will move when we will click */
+    transition: transform 0.3s ease;
+}
+
+/* getting border on input when focus, let's solve it */
+.btn:focus,
+.input:focus {
+    outline: none;
+}
+
+/* when search class have active class then we want input to expand */
+.search.active .input {
+    width: 200px;
+    /*from width:50px*/
+}
+
+.search.active .btn {
+    transform: translateX(198px);
+}
