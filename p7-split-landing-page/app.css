@@ -1,0 +1,118 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    height: 100vh;
+    overflow: hidden;
+    margin: 0;
+}
+
+.container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: #333;
+}
+
+.split {
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.split.left {
+    left: 0;
+    background: url('images/ps.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+/* overlay */
+.split.left::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(87, 84, 236, 0.7);
+}
+
+.split.right {
+    right: 0;
+    background: url('images/xbox.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+/* overlay */
+.split.right::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(43, 43, 43, 0.8);
+}
+
+h1 {
+    font-size: 4rem;
+    color: #fff;
+    position: absolute;
+    /* position: absolute;  within it's container,
+    if not applied h1 hide behind overlay???*/
+    left: 50%;
+    top: 20%;
+    transform: translateX(-50%);
+    /* on small screen go to next line like*/
+    /* Playstation    |    XBox */
+    /* 5              |    Series X */
+    /* we don't want it to wrap */
+    white-space: nowrap;
+}
+
+.btn {
+    position: absolute;
+    /* position: absolute;  within it's container */
+    left: 50%;
+    top: 40%;
+    transform: translateX(-50%);
+    text-decoration: none;
+    color: #fff;
+    border: 0.2rem solid #fff;
+    font-size: 1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    width: 15rem;
+    padding: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.split.left .btn:hover {
+    background-color: rgba(87, 84, 236, 1);
+    border-color: rgba(87, 84, 236, 1);
+}
+
+.split.right .btn:hover {
+    background-color: rgba(28, 122, 28, 1);
+    border-color: rgba(28, 122, 28, 1);
+}
+
+/* for hover effect with js */
+.hover-left .left {
+    width: 75%;
+}
+
+.hover-left .right {
+    width: 25%;
+}
+
+.hover-right .right {
+    width: 75%;
+}
+
+.hover-right .left {
+    width: 25%;
+}
