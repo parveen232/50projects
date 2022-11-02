@@ -14,14 +14,21 @@ const randomFunc = {
     symbol: getRandomSymbol
 }
 
+clipboardEl.addEventListener('click', () => {
+    const password = resultEl.innerText;
+
+    if(!password) {return}
+    // https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Interact_with_the_clipboard
+    navigator.clipboard.writeText(password);
+    alert('Password copied to clipboard');
+})
+
 generateEl.addEventListener('click', () => {
     const length = +lengthEl.value;
     const hasLower = lowercaseEl.checked;
     const hasUpper = uppercaseEl.checked;
     const hasNumber = numbersEl.checked;
     const hasSymbol = symbolsEl.checked;
-
-    // console.log(hasLower, hasUpper, hasNumber, hasSymbol); 
 
     resultEl.innerText = generatePassword(hasLower, hasUpper, hasNumber, hasSymbol, length);
 })
